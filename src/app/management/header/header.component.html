@@ -1,0 +1,28 @@
+<header>
+	<a href="javascript: void(0);" target="_self" class="d-sm-none toggle-sidebar"><i class="fa fa-bars fa-2x"></i></a>
+	<div class="account pull-right">
+		John
+		<button class="profile-dropdown-toggle"
+				ng-class="{'m-t-12': windowSize >= 768}"
+				type="button"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"
+				ng-style="{'width': '50px', 'height': '20px', 'background-size': 'contain', 'background-repeat': 'no-repeat', 'background-position': 'center', 'background-image':'url(' + baseUrl + '/' + vm.getProperty('logo') + ')'}">
+		</button>
+		<button class="profile-dropdown-toggle"
+				type="button"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"><i class="fa fa-dot-circle-o fa-2x"></i>
+		</button>
+		<ul class="dropdown-menu">
+			<li ng-class="{'active':location.active==true}" ng-repeat="location in vm.user.locations track by $index">
+				<a><i class="fa fa-location-arrow"
+																		  aria-hidden="true"></i>Location</a>
+			</li>
+			<li role="separator" class="divider"></li>
+			<li><a href="javascript:undefined;">Logout</a></li>
+		</ul>
+	</div>
+</header>

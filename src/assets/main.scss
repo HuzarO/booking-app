@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	letter-spacing: 0.01em;
+	font-family: 'Segoe UI', Arial, sans-serif;
+	font-size: 14px;
+	color: #626262;
+	font-weight: normal;
+	position: relative;
+	min-height: 100vh;
+	min-width: 320px;
+	font-synthesis: none;
+	-moz-font-feature-settings: 'kern';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	direction: ltr;
+}
+
+.no-padding {
+	psdding: 0 0 0 0 !important;
+}
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";

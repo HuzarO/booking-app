@@ -1,0 +1,21 @@
+#login-background {
+	height: 100vh;
+}
+
+form {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+form > *:not(mat-checkbox):not(a):not(button) {
+	width: 100%;
+}
+
+form > mat-checkbox {
+	float: left;
+}
+
+form > a {
+	float: right;
+}

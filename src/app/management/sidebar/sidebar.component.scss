@@ -1,0 +1,286 @@
+@import "../../../assets/variables";
+
+body > div.container-fluid {
+	width: 100%;
+	position: relative;
+}
+
+#sidebar {
+	width: 280px;
+	background: $sidebar-bg;
+	display: inline-block;
+	z-index: 900;
+	position: absolute;
+	min-height: 100vh;
+	height: 100%;
+	top: 0px;
+	overflow-y: auto;
+}
+
+body.sidebar-visible header,
+body.sidebar-visible div#content-pane,
+body.sidebar-visible footer {
+	width: calc(100% - 280px);
+	margin-left: 280px;
+	box-sizing: border-box;
+}
+
+body div#content-pane {
+	vertical-align: top;
+	display: inline-block;
+	min-height: calc(100vh - 102px);
+	background: #fafafa;
+	padding-top: 15px;
+	overflow-x: hidden;
+}
+
+body:not(.sidebar-visible) div#content-pane {
+	width: calc(100vw - 87px);
+}
+
+@media(min-width: 768px) {
+	body:not(.sidebar-visible) header,
+	body:not(.sidebar-visible) div#content-pane,
+	body:not(.sidebar-visible) footer {
+		margin-left: 70px;
+	}
+
+	body:not(.sidebar-visible) #sidebar {
+		left: -210px;
+	}
+
+	body.sidebar-visible #sidebar {
+		left: 0px;
+	}
+}
+
+@media(max-width: 767px) {
+	#sidebar {
+		left: -280px;
+	}
+
+	body div#content-pane {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+
+	body header,
+	body footer {
+		width: 100% !important;
+		margin-left: 0 !important;
+	}
+}
+
+#sidebar a.pin-sidebar,
+#sidebar a.toggle-sidebar {
+	width: 40px;
+	height: 18px;
+	margin-right: 5px;
+	float: right;
+	text-align: center;
+}
+
+body:not(.sidebar-visible) #sidebar a.pin-sidebar > i:before {
+	content: '\F10C';
+}
+
+body.sidebar-visible #sidebar a.pin-sidebar > i:before {
+	content: '\F192';
+}
+
+#sidebar.in {
+	animation: sidebar-open 0.5s ease-in-out 0s 1 forwards;
+}
+
+#sidebar.in.out {
+	animation: sidebar-close 0.5s ease-in-out 0s 1 forwards;
+}
+
+@keyframes sidebar-open {
+	0% {
+		left: -280px;
+	}
+
+	100% {
+		left: 0px;
+	}
+}
+
+@keyframes sidebar-close {
+	0% {
+		left: 0px;
+	}
+
+	100% {
+		left: -280px;
+	}
+}
+
+@media(min-width: 768px) {
+	body:not(.sidebar-visible) > #sidebar {
+		left: -210px;
+	}
+
+	@keyframes sidebar-open {
+		0% {
+			left: -210px;
+		}
+
+		100% {
+			left: 0px;
+		}
+	}
+
+	@keyframes sidebar-close {
+		0% {
+			left: 0px;
+		}
+
+		100% {
+			left: -210px;
+		}
+	}
+}
+
+#sidebar > .title {
+	display: block;
+	color: #ffffff;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px;
+}
+
+#sidebar > ul.main {
+	background: lighten($sidebar-bg, 10%);
+	padding-left: 0;
+}
+
+#sidebar > ul.main li {
+	list-style-type: none;
+	padding: 5px 0 5px 0;
+	position: relative;
+}
+
+#sidebar > ul.main > li.dropdown > a:after {
+	font-family: FontAwesome;
+	content: '\f053';
+	width: 15px;
+	height: 40px;
+	display: inline-block;
+	float: right;
+}
+
+#sidebar > ul.main > li.dropdown.in > a:after {
+	animation: sidebar-dropdown-open 0.5s linear 0s 1 forwards;
+}
+
+#sidebar > ul.main > li.dropdown.in.out > a:after {
+	animation: sidebar-dropdown-close 0.5s linear 0s 1 forwards;
+}
+
+@keyframes sidebar-dropdown-open {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(-90deg);
+	}
+}
+
+@keyframes sidebar-dropdown-close {
+	0% {
+		transform: rotate(-90deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+body.sidebar-visible > #sidebar a.pin-sidebar {
+	color: $brand-primary;
+}
+
+#sidebar > ul.main li > a {
+	color: lighten($sidebar-bg, 50%);
+	display: inline-block;
+	height: 40px;
+	width: 200px;
+	line-height: 40px;
+	transition: background linear 0.2s;
+	padding-left: 15px;
+}
+
+#sidebar > ul.main li:hover > a {
+	color: #ffffff;
+}
+
+#sidebar > ul.main li.active > a,
+#sidebar > ul.main li.in:not(.out) > a {
+	color: #ffffff;
+}
+
+#sidebar > ul.main li > span.icon-thumbnail {
+	float: right;
+	background: $sidebar-bg;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	transition: background linear 0.2s;
+	margin-right: 15px;
+	position: absolute;
+	right: 0;
+}
+
+#sidebar > ul.main li.active > span.icon-thumbnail,
+#sidebar > ul.main li.in:not(.out) > span.icon-thumbnail {
+	background: $brand-primary;
+}
+
+#sidebar > ul.main li > span.icon-thumbnail > i {
+	transition: linear 0.2s;
+	color: lighten($sidebar-bg, 50%);
+}
+
+#sidebar > ul.main li:hover > span.icon-thumbnail > i {
+	color: #ffffff;
+}
+
+#sidebar > ul.main li.active > span.icon-thumbnail > i,
+#sidebar > ul.main li.in:not(.out) > span.icon-thumbnail > i {
+	color: #ffffff;
+}
+
+#sidebar > ul.main > li > ul.menu {
+	margin-top: 5px;
+	margin-bottom: -5px;
+	padding-left: 10px;
+	background: darken($sidebar-bg, 10%);
+}
+
+#sidebar > ul.main > li > ul.menu > li {
+	padding-right: 0;
+}
+
+#sidebar > ul.main > li > ul.menu > li > a {
+	width: 160px;
+}
+
+#sidebar > ul.main > li > ul.menu {
+	transition: height 0.5s ease-in-out;
+	height: 0;
+}
+
+#sidebar > ul.main > li > ul.menu > li {
+	display: none;
+}
+
+#sidebar > ul.main > li.in > ul.menu > li {
+	display: block;
+	opacity: 0;
+}

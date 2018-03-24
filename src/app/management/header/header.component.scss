@@ -1,0 +1,59 @@
+@import "../../../assets/variables";
+
+header {
+	margin-top: 0px;
+	height: 50px;
+	border-bottom: solid 1px #e5e5e5;
+}
+
+header > h3 {
+	padding: 0 0 0 0;
+	margin: 0 0 0 15px;
+	line-height: 50px;
+	vertical-align: middle;
+	float: left;
+}
+
+header > .account {
+	line-height: 50px;
+	vertical-align: middle;
+	height: 40px;
+	margin-right: 15px;
+	position: relative;
+}
+
+header > .account > span {
+	cursor: pointer;
+}
+
+header > .toggle-sidebar {
+	line-height: 50px;
+	margin-left: 15px;
+	width: 12px;
+	float: left;
+}
+
+header button.profile-dropdown-toggle,
+header button.profile-dropdown-toggle:active,
+header button.profile-dropdown-toggle:hover {
+	vertical-align: middle;
+	background: none;
+	border: none;
+}
+
+header .dropdown-menu > li {
+	cursor: pointer;
+}
+
+header .dropdown-menu > li > a:hover {
+	background: lighten($brand-primary, 10%);
+	color: #ffffff;
+}
+
+header .dropdown-menu > li.active > a:hover {
+	background: darken($brand-primary, 5%);
+}
+
+header .dropdown-menu > li > a > i {
+	margin-right: 10px;
+}
